@@ -19,10 +19,10 @@ variable "cluster_name" {
   type        = string
 }
 
-variable "cluster_security_group_id" {
+variable "cluster_security_group_ids" {
   description = "If provided, the EKS cluster will be attached to this security group. If not given, a security group will be created with necessary ingress/egress to work with the workers"
-  type        = string
-  default     = ""
+  type        = list(string)
+  default     = []
 }
 
 variable "cluster_version" {
@@ -205,7 +205,7 @@ variable "local_exec_interpreter" {
 }
 
 variable "cluster_create_security_group" {
-  description = "Whether to create a security group for the cluster or attach the cluster to `cluster_security_group_id`."
+  description = "Whether to create a security group for the cluster or attach the cluster to `cluster_security_group_ids[0]`."
   type        = bool
   default     = true
 }

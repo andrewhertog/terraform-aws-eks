@@ -23,9 +23,9 @@ output "cluster_version" {
   value       = element(concat(aws_eks_cluster.this[*].version, list("")), 0)
 }
 
-output "cluster_security_group_id" {
+output "cluster_security_group_ids" {
   description = "Security group ID attached to the EKS cluster."
-  value       = local.cluster_security_group_id
+  value       = local.cluster_security_group_ids
 }
 
 output "config_map_aws_auth" {
